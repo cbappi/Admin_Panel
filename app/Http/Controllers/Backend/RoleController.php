@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\Module;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Http\Requests\RoleStoreRequest;
@@ -20,6 +21,7 @@ class RoleController extends Controller
      */
     public function index()
     {
+        Gate::authorize('index-role');
         $roles = Role::with(['permissions:id,permission_name,permission_slug'])->select(['id', 'role_name', 'is_deleteable', 'updated_at'])->get();
         return view('admin.pages.role.index', compact('roles'));
     }
@@ -31,6 +33,8 @@ class RoleController extends Controller
      */
     public function create()
     {
+
+        Gate::authorize('index-role');
         $modules = Module::with(['permissions:id,module_id,permission_name,permission_slug'])->select(['id', 'module_name'])->get();
         // return $modules;
         return view('admin.pages.role.create', compact('modules'));

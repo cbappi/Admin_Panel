@@ -1,4 +1,10 @@
  <!-- Menu -->
+
+
+
+
+
+
  <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="{{ route('home') }}" class="app-brand-link">
@@ -58,6 +64,7 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="height: calc(100vh - 60px); overflow-y: auto;">
         <!-- Dashboard -->
         <li class="menu-item active">
             <a href="{{ route('home') }}" class="menu-link">
@@ -69,6 +76,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">System Setting</span>
         </li>
+        {{-- @can('index-module') --}}
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
@@ -87,6 +95,10 @@
                 </li>
             </ul>
         </li>
+        {{-- @endcan --}}
+
+
+        {{-- @can('index-permission') --}}
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
@@ -105,6 +117,10 @@
                 </li>
             </ul>
         </li>
+        {{-- @endcan --}}
+
+
+        @can('index-role')
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-user-check"></i>
@@ -123,6 +139,100 @@
                 </li>
             </ul>
         </li>
+        @endcan
+
+        @can('index-user')
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bxs-user-plus"></i>
+                <div data-i18n="Account Settings">User Settings</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('users.index') }}" class="menu-link">
+                        <div data-i18n="Account">List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('users.create') }}" class="menu-link">
+                        <div data-i18n="Notifications">Create</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        @endcan
+
+
+        @can('index-page')
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bxs-book-open"></i>
+                <div data-i18n="Account Settings">Page Builder</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('page.index') }}" class="menu-link">
+                        <div data-i18n="Account">List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('page.create') }}" class="menu-link">
+                        <div data-i18n="Notifications">Create</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+       @endcan
+{{-- Test --}}
+
+<li class="menu-item">
+    <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bxs-book-open"></i>
+        <div data-i18n="Account Settings">Test</div>
+    </a>
+    <ul class="menu-sub">
+       <li class="menu-item">
+
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bxs-book-open"></i>
+                <div data-i18n="Test1">Test22</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('page.create') }}" class="menu-link">
+                        <div data-i18n="Notifications">List2</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('page.create') }}" class="menu-link">
+                        <div data-i18n="Notifications">Create2</div>
+                    </a>
+                </li>
+            </ul>
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <div data-i18n="Test1">Test11</div>
+
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('page.create') }}" class="menu-link">
+                        <div data-i18n="Notifications">List1</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('page.create') }}" class="menu-link">
+                        <div data-i18n="Notifications">Create1</div>
+                    </a>
+                </li>
+            </ul>
+     </li>
+
+    </ul>
+</li>
+
+
+
+
     </ul>
 
 
